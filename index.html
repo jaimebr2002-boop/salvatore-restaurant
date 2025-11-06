@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/8c30cc1319b064eb9d9ee6b1dbe20696/14e41f58-ca60-43ba-996d-7bf3f48744b8/index.html">
     <title>SALVATORE - Auténtica Cocina Italiana</title>
 </head>
 <body>
-    <p>Redirigiendo...</p>
+    <h1>SALVATORE - Restaurante Italiano</h1>
+    <p>Cargando menú del restaurante...</p>
+    <script>
+        // Cargar el contenido original sin redirigir
+        fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/8c30cc1319b064eb9d9ee6b1dbe20696/14e41f58-ca60-43ba-996d-7bf3f48744b8/index.html')
+            .then(response => response.text())
+            .then(html => {
+                // Eliminar el meta refresh del HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const metaRefresh = doc.querySelector('meta[http-equiv="refresh"]');
+                if (metaRefresh) {
+                    metaRefresh.remove();
+                }
+                // Reemplazar el contenido de la página
+                document.documentElement.innerHTML = doc.documentElement.innerHTML;
+            });
+    </script>
 </body>
 </html>
